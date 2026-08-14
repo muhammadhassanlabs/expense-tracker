@@ -52,3 +52,7 @@ The program supports four categories:
 
 ```bash
 git clone https://github.com/muhammadhassanlabs/expense-tracker.git
+```
+Author 
+- Muhammad Hassan Mussana
+   AI Engineer | Python Developer | Interested in Artificial Intelligence, Robotics, and Software Development.
