@@ -1,0 +1,79 @@
+print("==== Welcome to the Expense Tracker ====")
+print("Please enter the multiple expenses.")
+expenses_list = []
+total = 0
+for i in range(1, 4):
+    try:
+        name = input("\nEnter the Expense name: ")
+        amount = float(input("Enter the Expense Amount: "))
+
+        category = int(input(
+            "1. Food\n"
+            "2. Transport\n"
+            "3. Education\n"
+            "4. Others\n"
+            "Enter the category of the expense (1-4): "
+        ))
+
+        if category == 1:
+            chosen_category = "Food"
+        elif category == 2:
+            chosen_category = "Transport"
+        elif category == 3:
+            chosen_category = "Education"
+        elif category == 4:
+            chosen_category = "Others"
+        else:
+            print("Invalid Category. Defaulting to Others.")
+            chosen_category = "Others"
+
+        expenses_list.append({
+            "name": name,
+            "amount": amount,
+            "category": chosen_category
+        })
+
+        total += amount
+
+    except ValueError:
+        print("Invalid input. Please enter valid values.")
+highest_expense = 0
+highest_expense_name = ""
+for item in expenses_list:
+    if item["amount"] > highest_expense:
+        highest_expense = item["amount"]
+        highest_expense_name = item["name"]
+category_total = {
+    "Food": 0,
+    "Transport": 0,
+    "Education": 0,
+    "Others": 0
+}
+
+for item in expenses_list:
+    category = item["category"]
+    amount = item["amount"]
+
+    category_total[category] += amount
+print("\n==== Recorded Expenses ====")
+
+for item in expenses_list:
+    print(f"Name: {item['name']}")
+    print(f"Amount: {item['amount']:.2f}")
+    print(f"Category: {item['category']}")
+    print()
+print("==== Final Expense Report ====")
+
+print(f"Total Spent: {total:.2f}")
+
+print(
+    f"Highest Expense: {highest_expense_name} "
+    f"({highest_expense:.2f})"
+)
+
+print("\n==== Category-wise Summary ====")
+
+for category, amount in category_total.items():
+    print(f"{category}: {amount:.2f}")
+
+print("\nThank you for using Expense Tracker.")
